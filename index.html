@@ -94,12 +94,21 @@
   .hero {
     padding: 100px 5% 80px;
     display: grid;
-    grid-template-columns: 1fr 420px;
+    grid-template-columns: 1fr 380px 290px;
     gap: 60px;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  .hero-news{display:flex;flex-direction:column;gap:10px}
+  .hero-news .hn-title{font-family:'Barlow',sans-serif;font-weight:700;font-size:16px;color:var(--gray-900,#1a1a1a);margin:0 0 2px}
+  .hero-news a.hn{display:block;text-decoration:none;background:#fff;border:1px solid var(--gray-100,#e8e8e8);border-left:3px solid var(--blue-600,#1f6fc4);border-radius:10px;padding:11px 13px}
+  .hero-news a.hn:hover{border-color:var(--blue-600,#1f6fc4)}
+  .hero-news .hn-src{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8a97a6;font-weight:600;margin-bottom:4px;font-family:'Barlow',sans-serif}
+  .hero-news .hn-t{font-size:13px;line-height:1.45;color:#152230;font-weight:600}
+  .dom-group-title{font-family:'Barlow',sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-600,#1f6fc4);margin:0 0 16px;text-align:center}
+  @media (max-width:1150px){.hero-news{display:none}}
 
   .hero-eyebrow {
     display: inline-flex;
@@ -636,7 +645,7 @@
     <li><a href="#apropos">À propos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+  <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-left:auto; margin-right:auto;">
     <a href="offres.html" class="nav-cta">Vous êtes candidat ? Postulez sur la page carrière</a>
     <a href="#contact" class="nav-cta">Vous êtes une entreprise ? Déposez votre besoin</a>
   </div>
@@ -724,21 +733,45 @@
       </div>
     </div>
   </div>
-</section>
+
+    <aside class="hero-news">
+      <p class="hn-title">L'industrie en mouvement</p>
+      <a class="hn" href="https://www.usinenouvelle.com/made-in-france/industrie-ces-sites-qui-vont-ouvrir-ou-monter-en-puissance-en-france-en-2026.LOGFNT5FN5CFDITBLTKWKTQSWA.html" target="_blank" rel="noopener"><div class="hn-src">Usine Nouvelle · Made in France</div><div class="hn-t">Nouvelles usines : les sites qui ouvrent ou montent en puissance en France en 2026</div></a>
+      <a class="hn" href="https://www.info.gouv.fr/actualite/choose-france-2026-le-rendez-vous-de-l-attractivite-en-france" target="_blank" rel="noopener"><div class="hn-src">Info.gouv · Attractivité</div><div class="hn-t">Choose France 2026 : nouvelle vague d'investissements pour l'industrie française</div></a>
+      <a class="hn" href="https://industrie-magazine.fr/recrutement-industriel-en-2026-la-penurie-de-talents-devient-le-premier-defi-des-usines-francaises/" target="_blank" rel="noopener"><div class="hn-src">Emploi · Métiers en tension</div><div class="hn-t">Recrutement industriel : la pénurie de talents, premier défi des usines françaises</div></a>
+    </aside>
+  </section>
 <section id="secteurs">
   <div class="section-inner">
     <div class="section-eyebrow">Nos secteurs</div>
     <h2 class="section-title">Les domaines d'intervention</h2>
     <p class="section-sub">Une expertise construite au contact des métiers techniques. Une connaissance concrète des réalités du terrain industriel.</p>
+    <div class="dom-group-title">Nos métiers</div>
     <div class="secteurs-grid">
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Mécanique & chaudronnerie</span></div>
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Électrotechnique</span></div>
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Maintenance industrielle</span></div>
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Production & opérateurs</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Maintenance industrielle & SAV</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Électrotechnique & électricité</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Production & conduite de ligne</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Méthodes & industrialisation</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Qualité & HSE</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Bureau d'études & conception</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Automatisme & robotique</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Mécanique, chaudronnerie & usinage</span></div>
       <div class="secteur-tag"><div class="secteur-dot"></div><span>Logistique & supply chain</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Achats & approvisionnements</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Encadrement technique</span></div>
+    </div>
+    <div class="dom-group-title" style="margin-top:34px">Nos secteurs d'activité</div>
+    <div class="secteurs-grid">
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Pharmaceutique & médical</span></div>
       <div class="secteur-tag"><div class="secteur-dot"></div><span>Agroalimentaire</span></div>
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Électronique & automatisme</span></div>
-      <div class="secteur-tag"><div class="secteur-dot"></div><span>Qualité, HSE & méthodes</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Aéronautique & défense</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Énergie & environnement</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Levage & manutention</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Machines spéciales & équipements</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Packaging & emballage</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Métallurgie</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Électronique</span></div>
+      <div class="secteur-tag"><div class="secteur-dot"></div><span>Bois, papier & carton</span></div>
     </div>
   </div>
 </section>
@@ -763,7 +796,22 @@
       </div>
     </div>
   </div>
-</section>
+
+    <div style="grid-column:1/-1;margin-top:56px">
+      <div class="dom-group-title">Ils nous font confiance</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:980px;margin:0 auto">
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Saint-Gobain / Placo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saint-Gobain%20Logo%202025.png?width=300" alt="Saint-Gobain / Placo" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="ENGIE"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo-engie.svg?width=300" alt="ENGIE" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Liebherr"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Liebherr%20logo.svg?width=300" alt="Liebherr" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Schindler"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Schindler%20Logo.jpg?width=300" alt="Schindler" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="FANUC"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Fanuc%20logo.svg?width=300" alt="FANUC" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Konecranes"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Konecranes-Logo.svg?width=300" alt="Konecranes" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="DMG MORI"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/DMG%20Mori%20logo.svg?width=300" alt="DMG MORI" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Lectra"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lectra%20logo.svg?width=300" alt="Lectra" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      <div style="background:#fff;border:1px solid #e5eaf1;border-radius:12px;width:150px;height:64px;display:flex;align-items:center;justify-content:center;padding:10px 14px" title="Entremont"><img src="https://www.google.com/s2/favicons?domain=entremont.com&sz=128" alt="Entremont" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7"></div>
+      </div>
+    </div>
+  </section>
 
 <!-- CONTACT -->
 <section id="contact" style="background: var(--gray-50);">

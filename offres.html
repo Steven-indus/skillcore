@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Offres d'emploi - Skillcore Industrie</title>
+<meta name="description" content="Toutes les offres d'emploi de Skillcore Industrie : maintenance, production, qualité, bureau d'études, SAV, automatisme. CDI, CDD et intérim, en Gironde et partout en France." />
+<link rel="canonical" href="https://skillcore-industrie.fr/offres.html" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blue:#1f6fc4;--blue-strong:#0b3f82;--blue-tint:#e8f1fc;
+    --ink:#152230;--muted:#5c6b7d;--faint:#8a97a6;--line:#dde5ef;
+    --bg:#f4f7fb;--surface:#ffffff;--surface-2:#eef3f9;
+    --good:#177a4d;--good-tint:#e3f3ea;
+    --font-display:'Barlow',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --shadow:0 1px 2px rgba(16,40,70,.05),0 10px 26px rgba(16,40,70,.06);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(160deg,#2a86d6,#0b3f82);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:19px}
+  .brand b{font-family:var(--font-display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
+  .brand span{display:block;font-size:.72rem;color:var(--muted);font-weight:500;letter-spacing:.02em;margin-top:-2px}
+  .back{font-size:.9rem;color:var(--blue-strong);text-decoration:none;font-weight:600;white-space:nowrap}
+  .back:hover{text-decoration:underline}
+
+  main{max-width:1080px;margin:0 auto;padding:40px 20px 64px}
+  .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+  .hero p{color:var(--muted);max-width:60ch;margin:0;font-size:1.02rem}
+
+  .controls{margin:28px 0 8px;display:flex;flex-direction:column;gap:14px}
+  .search{position:relative}
+  .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--faint)}
+  .search input{width:100%;padding:13px 14px 13px 42px;border:1px solid var(--line);border-radius:11px;background:var(--surface);font:inherit;color:var(--ink);box-shadow:var(--shadow)}
+  .search input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
+  .hint{font-size:.8rem;color:var(--faint);margin:2px 2px 0}
+
+  .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-family:var(--font-display);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);padding-left:2px}
+  .field select{appearance:none;-webkit-appearance:none;width:100%;padding:11px 34px 11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:.92rem;box-shadow:var(--shadow);cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c6b7d' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center}
+  .field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);font-family:var(--font-display);font-weight:600;font-size:.82rem;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--blue)}
+  .chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .reset{margin-left:auto;background:none;border:none;color:var(--blue-strong);font:inherit;font-weight:600;font-size:.85rem;cursor:pointer;padding:6px 4px}
+  .reset:hover{text-decoration:underline}
+  .reset[hidden]{display:none}
+
+  .count{color:var(--muted);font-size:.88rem;margin:16px 0 4px}
+  .count b{color:var(--ink)}
+  .count .live{display:inline-flex;align-items:center;gap:6px;color:var(--good);font-weight:600;margin-left:10px}
+  .count .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 0 3px var(--good-tint)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;gap:12px;transition:.18s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(16,40,70,.06),0 16px 34px rgba(16,40,70,.10);border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
+  .card h2{font-family:var(--font-display);font-weight:600;font-size:1.14rem;line-height:1.25;margin:0;letter-spacing:-.01em}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .badge{font-family:var(--font-display);font-weight:600;font-size:.74rem;letter-spacing:.02em;padding:4px 10px;border-radius:6px;background:var(--blue-tint);color:var(--blue-strong)}
+  .loc{display:inline-flex;align-items:center;gap:5px;color:var(--muted);font-size:.86rem}
+  .loc svg{width:14px;height:14px;color:var(--faint)}
+  .salary{color:var(--ink);font-weight:600;font-size:.92rem}
+  .teaser{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .actions{display:flex;gap:10px;margin-top:auto;padding-top:6px}
+  .btn{flex:1;text-align:center;text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:.92rem;padding:11px 14px;border-radius:10px;transition:.15s;border:1px solid transparent}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--blue-strong)}
+  .btn-ghost{background:transparent;color:var(--blue-strong);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--blue);background:var(--surface-2)}
+
+  .state{text-align:center;padding:60px 20px;color:var(--muted)}
+  .state h3{font-family:var(--font-display);color:var(--ink);margin:0 0 6px;font-weight:600}
+  .state a{color:var(--blue-strong);font-weight:600}
+  .skeleton{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;min-height:190px}
+  .sk-line{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--surface-2),#e3ebf4,var(--surface-2));background-size:200% 100%;animation:sh 1.3s infinite;margin-bottom:10px}
+  @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  @media (prefers-reduced-motion:reduce){.sk-line{animation:none}.card:hover{transform:none}}
+
+  footer{max-width:1080px;margin:0 auto;padding:24px 20px 48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+  footer a{color:var(--blue-strong)}
+</style>
+</head>
+<body>
+  <header class="site">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="Retour à l'accueil Skillcore Industrie">
+        <span class="mark">S</span>
+        <span><b>Skillcore Industrie</b><span>Recrutement industriel</span></span>
+      </a>
+      <a class="back" href="/">Accueil</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Nos offres d'emploi</h1>
+      <p>Retrouvez tous nos postes à pourvoir dans l'industrie et la supply chain : maintenance, production, qualité, bureau d'études, SAV, automatisme. Postulez en un clic.</p>
+    </div>
+
+    <div class="controls">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Métier, ville, département ou région (ex. technicien Ile-de-France)" aria-label="Rechercher une offre" />
+      </div>
+      <p class="hint">Astuce : cherchez large. « technicien ile de france » remonte aussi les offres à Étampes, Melun, etc.</p>
+
+      <div class="filters">
+        <div class="field"><label for="f-metier">Métier</label><select id="f-metier"><option value="">Tous les métiers</option></select></div>
+        <div class="field"><label for="f-region">Région</label><select id="f-region"><option value="">Toutes les régions</option></select></div>
+        <div class="field"><label for="f-dept">Département</label><select id="f-dept"><option value="">Tous les départements</option></select></div>
+        <div class="field"><label for="f-ville">Ville</label><select id="f-ville"><option value="">Toutes les villes</option></select></div>
+        <div class="field"><label for="f-salaire">Salaire (min.)</label><select id="f-salaire"><option value="">Tous les salaires</option><option value="25000">25 000 € et +</option><option value="30000">30 000 € et +</option><option value="35000">35 000 € et +</option><option value="40000">40 000 € et +</option><option value="45000">45 000 € et +</option><option value="50000">50 000 € et +</option></select></div>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="Filtrer par type de contrat">
+        <button class="reset" id="reset" hidden>Réinitialiser les filtres</button>
+      </div>
+    </div>
+
+    <p class="count" id="count"></p>
+
+    <div class="grid" id="grid">
+      <div class="skeleton"><div class="sk-line" style="width:70%"></div><div class="sk-line" style="width:40%"></div><div class="sk-line" style="width:90%"></div><div class="sk-line" style="width:85%"></div></div>
+      <div class="skeleton"><div class="sk-line" style="width:60%"></div><div class="sk-line" style="width:45%"></div><div class="sk-line" style="width:88%"></div><div class="sk-line" style="width:80%"></div></div>
+      <div class="skeleton"><div class="sk-line" style="width:75%"></div><div class="sk-line" style="width:38%"></div><div class="sk-line" style="width:92%"></div><div class="sk-line" style="width:70%"></div></div>
+    </div>
+  </main>
+
+  <footer>
+    Liste mise à jour automatiquement depuis nos diffusions HelloWork. Une candidature nous parvient directement. <a href="/">skillcore-industrie.fr</a>
+  </footer>
+
+<script>
+(function(){
+  var FEED_URL = "https://www.hw-recruteur.com/flux/v1/share/hUxAHG0-cZlw1mJmOPdeF9fsSvFk62aPQPiT9ti5gqU=";
+
+  var DEPTS = {
+    "01":["Ain","Auvergne-Rhone-Alpes"],"02":["Aisne","Hauts-de-France"],"03":["Allier","Auvergne-Rhone-Alpes"],
+    "04":["Alpes-de-Haute-Provence","Provence-Alpes-Cote d'Azur"],"05":["Hautes-Alpes","Provence-Alpes-Cote d'Azur"],
+    "06":["Alpes-Maritimes","Provence-Alpes-Cote d'Azur"],"07":["Ardeche","Auvergne-Rhone-Alpes"],"08":["Ardennes","Grand Est"],
+    "09":["Ariege","Occitanie"],"10":["Aube","Grand Est"],"11":["Aude","Occitanie"],"12":["Aveyron","Occitanie"],
+    "13":["Bouches-du-Rhone","Provence-Alpes-Cote d'Azur"],"14":["Calvados","Normandie"],"15":["Cantal","Auvergne-Rhone-Alpes"],
+    "16":["Charente","Nouvelle-Aquitaine"],"17":["Charente-Maritime","Nouvelle-Aquitaine"],"18":["Cher","Centre-Val de Loire"],
+    "19":["Correze","Nouvelle-Aquitaine"],"20":["Corse","Corse"],"21":["Cote-d'Or","Bourgogne-Franche-Comte"],
+    "22":["Cotes-d'Armor","Bretagne"],"23":["Creuse","Nouvelle-Aquitaine"],"24":["Dordogne","Nouvelle-Aquitaine"],
+    "25":["Doubs","Bourgogne-Franche-Comte"],"26":["Drome","Auvergne-Rhone-Alpes"],"27":["Eure","Normandie"],
+    "28":["Eure-et-Loir","Centre-Val de Loire"],"29":["Finistere","Bretagne"],"30":["Gard","Occitanie"],
+    "31":["Haute-Garonne","Occitanie"],"32":["Gers","Occitanie"],"33":["Gironde","Nouvelle-Aquitaine"],
+    "34":["Herault","Occitanie"],"35":["Ille-et-Vilaine","Bretagne"],"36":["Indre","Centre-Val de Loire"],
+    "37":["Indre-et-Loire","Centre-Val de Loire"],"38":["Isere","Auvergne-Rhone-Alpes"],"39":["Jura","Bourgogne-Franche-Comte"],
+    "40":["Landes","Nouvelle-Aquitaine"],"41":["Loir-et-Cher","Centre-Val de Loire"],"42":["Loire","Auvergne-Rhone-Alpes"],
+    "43":["Haute-Loire","Auvergne-Rhone-Alpes"],"44":["Loire-Atlantique","Pays de la Loire"],"45":["Loiret","Centre-Val de Loire"],
+    "46":["Lot","Occitanie"],"47":["Lot-et-Garonne","Nouvelle-Aquitaine"],"48":["Lozere","Occitanie"],
+    "49":["Maine-et-Loire","Pays de la Loire"],"50":["Manche","Normandie"],"51":["Marne","Grand Est"],
+    "52":["Haute-Marne","Grand Est"],"53":["Mayenne","Pays de la Loire"],"54":["Meurthe-et-Moselle","Grand Est"],
+    "55":["Meuse","Grand Est"],"56":["Morbihan","Bretagne"],"57":["Moselle","Grand Est"],"58":["Nievre","Bourgogne-Franche-Comte"],
+    "59":["Nord","Hauts-de-France"],"60":["Oise","Hauts-de-France"],"61":["Orne","Normandie"],"62":["Pas-de-Calais","Hauts-de-France"],
+    "63":["Puy-de-Dome","Auvergne-Rhone-Alpes"],"64":["Pyrenees-Atlantiques","Nouvelle-Aquitaine"],"65":["Hautes-Pyrenees","Occitanie"],
+    "66":["Pyrenees-Orientales","Occitanie"],"67":["Bas-Rhin","Grand Est"],"68":["Haut-Rhin","Grand Est"],
+    "69":["Rhone","Auvergne-Rhone-Alpes"],"70":["Haute-Saone","Bourgogne-Franche-Comte"],"71":["Saone-et-Loire","Bourgogne-Franche-Comte"],
+    "72":["Sarthe","Pays de la Loire"],"73":["Savoie","Auvergne-Rhone-Alpes"],"74":["Haute-Savoie","Auvergne-Rhone-Alpes"],
+    "75":["Paris","Ile-de-France"],"76":["Seine-Maritime","Normandie"],"77":["Seine-et-Marne","Ile-de-France"],
+    "78":["Yvelines","Ile-de-France"],"79":["Deux-Sevres","Nouvelle-Aquitaine"],"80":["Somme","Hauts-de-France"],
+    "81":["Tarn","Occitanie"],"82":["Tarn-et-Garonne","Occitanie"],"83":["Var","Provence-Alpes-Cote d'Azur"],
+    "84":["Vaucluse","Provence-Alpes-Cote d'Azur"],"85":["Vendee","Pays de la Loire"],"86":["Vienne","Nouvelle-Aquitaine"],
+    "87":["Haute-Vienne","Nouvelle-Aquitaine"],"88":["Vosges","Grand Est"],"89":["Yonne","Bourgogne-Franche-Comte"],
+    "90":["Territoire de Belfort","Bourgogne-Franche-Comte"],"91":["Essonne","Ile-de-France"],"92":["Hauts-de-Seine","Ile-de-France"],
+    "93":["Seine-Saint-Denis","Ile-de-France"],"94":["Val-de-Marne","Ile-de-France"],"95":["Val-d'Oise","Ile-de-France"],
+    "971":["Guadeloupe","Guadeloupe"],"972":["Martinique","Martinique"],"973":["Guyane","Guyane"],
+    "974":["La Reunion","La Reunion"],"976":["Mayotte","Mayotte"]
+  };
+  var SYN = {
+    "Ile-de-France":"idf region parisienne paris","Provence-Alpes-Cote d'Azur":"paca sud",
+    "Auvergne-Rhone-Alpes":"aura","Nouvelle-Aquitaine":"aquitaine","Hauts-de-France":"nord picardie"
+  };
+  // Familles de métiers : label -> mots-clés (dans le titre, sans accents)
+  var METIERS = [
+    ["Maintenance", ["maintenance","sav","itinerant","installation","mise en service","depannage","service client","electrotech","electricien","electro","electromec","cableur"]],
+    ["Production", ["production","fabrication","operateur","conducteur de ligne","pilote de ligne","regleur"]],
+    ["Qualité", ["qualite","qhse","controle","metrologie"]],
+    ["Méthodes", ["methode","industrialisation"]],
+    ["Bureau d'études", ["bureau d etudes","etudes","dessinateur","projeteur","conception","concepteur","calcul"]],
+    ["Automatisme", ["automat","robot","instrumentation","gtb","gtc"]],
+    ["Chaudronnerie / Usinage", ["chaudronn","soudeur","soudage","usinage","usineur","tourneur","fraiseur","tuyauteur","tolier"]],
+    ["Logistique / Supply Chain", ["logistique","supply","approvision","achat","magasin","cariste","ordonnancement","transport"]],
+    ["Encadrement", ["responsable","chef","manager","directeur","superviseur","coordinateur","adjoint"]]
+  ];
+
+  var grid=document.getElementById('grid'), countEl=document.getElementById('count'), chipsEl=document.getElementById('chips'), q=document.getElementById('q');
+  var selMetier=document.getElementById('f-metier'), selRegion=document.getElementById('f-region'), selDept=document.getElementById('f-dept'), selVille=document.getElementById('f-ville'), selSalaire=document.getElementById('f-salaire'), resetBtn=document.getElementById('reset');
+  var ALL=[], activeContract='Tous';
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]);}); }
+  function stripHtml(h){ var d=document.createElement('div'); d.innerHTML=h||''; return (d.textContent||'').replace(/\s+/g,' ').trim(); }
+  function fmtInt(n){ return Number(n).toLocaleString('fr-FR'); }
+  function norm(s){ return String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,' ').trim(); }
+
+  function geo(zip){
+    zip=String(zip||''); var code=zip.slice(0,2);
+    if(code==='97'||code==='98') code=zip.slice(0,3);
+    var d=DEPTS[code];
+    if(!d) return {code:code,dept:'',region:'',syn:''};
+    return {code:code,dept:d[0],region:d[1],syn:(SYN[d[1]]||'')};
+  }
+  function metiersOf(title){
+    var t=norm(title), out=[];
+    for(var i=0;i<METIERS.length;i++){ var kw=METIERS[i][1]; for(var j=0;j<kw.length;j++){ if(t.indexOf(norm(kw[j]))!==-1){ out.push(METIERS[i][0]); break; } } }
+    return out;
+  }
+  function salary(o){
+    if(o.RemunerationIsNotVisible) return '';
+    var min=o.MinRemuneration,max=o.MaxRemuneration; if(!min&&!max) return '';
+    var cur=(o.RemunerationCurrency==='EUR'||!o.RemunerationCurrency)?'€':esc(o.RemunerationCurrency);
+    var per=o.RemunerationInterval?(' / '+esc(o.RemunerationInterval)):'';
+    var val=(min&&max&&min!==max)?(fmtInt(min)+' - '+fmtInt(max)):fmtInt(max||min);
+    return val+' '+cur+per;
+  }
+  function annualSalary(o){
+    if(o.RemunerationIsNotVisible) return 0;
+    var v=Number(o.MaxRemuneration||o.MinRemuneration||0); if(!v) return 0;
+    var it=String(o.RemunerationInterval||'').toLowerCase();
+    if(it.indexOf('mois')!==-1||it.indexOf('month')!==-1) v=v*12;
+    else if(it.indexOf('heure')!==-1||it.indexOf('hour')!==-1) v=v*1820;
+    return v;
+  }
+  function locOf(o){
+    var city=o.City?esc(o.City):''; var zip=o.ZipCode?(' ('+esc(o.ZipCode)+')'):'';
+    return city?(city+zip):(o.Country?esc(o.Country):'France');
+  }
+  function card(o){
+    var title=esc(o.NameAdvertise||'Poste à pourvoir');
+    var contract=o.JobContract?esc(o.JobContract):'';
+    var sal=salary(o);
+    var teaser=esc(stripHtml(o.Description||o.DescriptionFormatted||'').slice(0,220));
+    var apply=o.ApplyLinkPage||o.LinkPage||o.ExternalUrl||'#';
+    var view=o.LinkPage||o.ExternalUrl||apply;
+    return '<article class="card"><div class="meta">'
+      +(contract?'<span class="badge">'+contract+'</span>':'')
+      +'<span class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>'+locOf(o)+'</span></div>'
+      +'<h2>'+title+'</h2>'
+      +(sal?'<div class="salary">'+sal+'</div>':'')
+      +(teaser?'<p class="teaser">'+teaser+'</p>':'')
+      +'<div class="actions"><a class="btn btn-primary" href="'+esc(apply)+'" target="_blank" rel="noopener">Postuler</a>'
+      +'<a class="btn btn-ghost" href="'+esc(view)+'" target="_blank" rel="noopener">Voir l\'offre</a></div></article>';
+  }
+
+  function fillSelect(sel, values){
+    var keep=sel.querySelector('option[value=""]');
+    sel.innerHTML=''; sel.appendChild(keep);
+    values.forEach(function(v){ var o=document.createElement('option'); o.value=v; o.textContent=v; sel.appendChild(o); });
+  }
+  function uniqSort(arr){ return arr.filter(function(v,i){return v&&arr.indexOf(v)===i;}).sort(function(a,b){return a.localeCompare(b,'fr');}); }
+
+  function buildFilters(){
+    // contrats (puces)
+    var types=['Tous']; ALL.forEach(function(o){ if(o.JobContract&&types.indexOf(o.JobContract)===-1) types.push(o.JobContract); });
+    var frag=types.map(function(t){ return '<button class="chip" data-c="'+esc(t)+'" aria-pressed="'+(t==='Tous'?'true':'false')+'">'+esc(t)+'</button>'; }).join('');
+    chipsEl.insertAdjacentHTML('afterbegin', frag);
+    chipsEl.querySelectorAll('.chip').forEach(function(btn){ btn.addEventListener('click',function(){ activeContract=btn.getAttribute('data-c'); chipsEl.querySelectorAll('.chip').forEach(function(b){b.setAttribute('aria-pressed',b===btn?'true':'false');}); render(); }); });
+
+    // métier
+    var mets={}; ALL.forEach(function(o){ o._metiers.forEach(function(m){mets[m]=1;}); });
+    fillSelect(selMetier, Object.keys(mets).sort(function(a,b){return a.localeCompare(b,'fr');}));
+    // région / département / ville
+    fillSelect(selRegion, uniqSort(ALL.map(function(o){return o._region;})));
+    var depts=ALL.map(function(o){return o._deptLabel;}).filter(Boolean);
+    depts=depts.filter(function(v,i){return depts.indexOf(v)===i;}).sort();
+    fillSelect(selDept, depts);
+    fillSelect(selVille, uniqSort(ALL.map(function(o){return o._city;})));
+  }
+
+  function anyFilter(){ return activeContract!=='Tous'||selMetier.value||selRegion.value||selDept.value||selVille.value||selSalaire.value||q.value.trim(); }
+
+  function render(){
+    var tokens=norm(q.value).split(' ').filter(Boolean);
+    var list=ALL.filter(function(o){
+      if(activeContract!=='Tous'&&(o.JobContract||'')!==activeContract) return false;
+      if(selMetier.value&&o._metiers.indexOf(selMetier.value)===-1) return false;
+      if(selRegion.value&&o._region!==selRegion.value) return false;
+      if(selDept.value&&o._deptLabel!==selDept.value) return false;
+      if(selVille.value&&o._city!==selVille.value) return false;
+      if(selSalaire.value&&o._salAnnual<Number(selSalaire.value)) return false;
+      for(var i=0;i<tokens.length;i++){ if(o._hay.indexOf(tokens[i])===-1) return false; }
+      return true;
+    });
+    if(!list.length){
+      grid.innerHTML='<div class="state" style="grid-column:1/-1"><h3>Aucune offre ne correspond</h3><p>Essayez un critère plus large (un métier seul, ou une région) ou réinitialisez les filtres.</p></div>';
+    } else { grid.innerHTML=list.map(card).join(''); }
+    countEl.innerHTML='<b>'+list.length+'</b> offre'+(list.length>1?'s':'')+(anyFilter()?' affichée'+(list.length>1?'s':''):'')+' <span class="live">mise à jour en direct</span>';
+    resetBtn.hidden=!anyFilter();
+  }
+
+  function resetAll(){
+    activeContract='Tous'; q.value=''; selMetier.value=''; selRegion.value=''; selDept.value=''; selVille.value=''; selSalaire.value='';
+    chipsEl.querySelectorAll('.chip').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-c')==='Tous'?'true':'false'); });
+    render();
+  }
+
+  function fail(){
+    grid.innerHTML='<div class="state" style="grid-column:1/-1"><h3>Les offres arrivent</h3><p>Impossible de charger la liste pour le moment. Consultez nos offres sur <a href="https://www.hellowork.com/fr-fr/entreprises/skillcore-industrie-209423.html" target="_blank" rel="noopener">HelloWork</a> ou revenez dans un instant.</p></div>';
+    countEl.textContent='';
+  }
+
+  fetch(FEED_URL,{headers:{'Accept':'application/json'}})
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(data){
+      ALL=(data&&(data.Results||data.results||data.offers))||[];
+      if(!Array.isArray(ALL)||!ALL.length){ fail(); return; }
+      ALL.forEach(function(o){
+        var g=geo(o.ZipCode);
+        o._region=g.region; o._city=o.City||'';
+        o._deptLabel=g.code?(g.code+(g.dept?(' - '+g.dept):'')):'';
+        o._metiers=metiersOf(o.NameAdvertise);
+        o._salAnnual=annualSalary(o);
+        o._hay=norm([o.NameAdvertise,o.City,o.ZipCode,o.JobContract,g.code,g.dept,g.region,g.syn,o._metiers.join(' ')].join(' '));
+      });
+      buildFilters();
+      render();
+    })
+    .catch(function(e){ fail(); });
+
+  q.addEventListener('input', render);
+  [selMetier,selRegion,selDept,selVille,selSalaire].forEach(function(s){ s.addEventListener('change', render); });
+  resetBtn.addEventListener('click', resetAll);
+})();
+</script>
+</body>
+</html>

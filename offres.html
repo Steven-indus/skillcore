@@ -33,8 +33,30 @@
   .back:hover{text-decoration:underline}
 
   main{max-width:1080px;margin:0 auto;padding:40px 20px 64px}
+  .hero{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
   .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
   .hero p{color:var(--muted);max-width:60ch;margin:0;font-size:1.02rem}
+  .btn-sponta{flex:none;align-self:flex-start;background:var(--blue);color:#fff;border:none;cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:.95rem;padding:13px 20px;border-radius:10px;box-shadow:var(--shadow);transition:.15s;margin-top:6px}
+  .btn-sponta:hover{background:var(--blue-strong)}
+
+  /* modal candidature spontanee */
+  dialog.sponta{border:none;border-radius:16px;padding:0;max-width:440px;width:calc(100% - 40px);box-shadow:0 20px 60px rgba(16,40,70,.25);background:var(--surface);color:var(--ink)}
+  dialog.sponta::backdrop{background:rgba(13,26,43,.5)}
+  .sp-inner{padding:24px}
+  .sp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+  .sp-head h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;margin:0}
+  .sp-close{background:none;border:none;cursor:pointer;color:var(--faint);font-size:1.3rem;line-height:1;padding:4px}
+  .sp-sub{color:var(--muted);font-size:.88rem;margin:0 0 16px}
+  .sp-form{display:flex;flex-direction:column;gap:12px}
+  .sp-field{display:flex;flex-direction:column;gap:4px}
+  .sp-field label{font-family:var(--font-display);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+  .sp-field input,.sp-field select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font:inherit;font-size:.93rem}
+  .sp-field input:focus,.sp-field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-tint)}
+  .sp-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:480px){.sp-row{grid-template-columns:1fr}}
+  .sp-note{background:var(--blue-tint);color:var(--blue-strong);font-size:.83rem;border-radius:9px;padding:10px 12px;line-height:1.45}
+  .sp-submit{background:var(--blue);color:#fff;border:none;cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:.98rem;padding:13px;border-radius:10px;transition:.15s}
+  .sp-submit:hover{background:var(--blue-strong)}
 
   .controls{margin:28px 0 8px;display:flex;flex-direction:column;gap:14px}
   .search{position:relative}
@@ -105,9 +127,54 @@
 
   <main>
     <div class="hero">
-      <h1>Nos offres d'emploi</h1>
-      <p>Retrouvez tous nos postes à pourvoir dans l'industrie et la supply chain : maintenance, production, qualité, bureau d'études, SAV, automatisme. Postulez en un clic.</p>
+      <div>
+        <h1>Nos offres d'emploi</h1>
+        <p>Retrouvez tous nos postes à pourvoir dans l'industrie et la supply chain : maintenance, production, qualité, bureau d'études, SAV, automatisme. Postulez en un clic.</p>
+      </div>
+      <button class="btn-sponta" id="sponta-open" type="button">Candidature spontanée</button>
     </div>
+
+    <dialog class="sponta" id="sponta-modal">
+      <div class="sp-inner">
+        <div class="sp-head">
+          <h2>Candidature spontanée</h2>
+          <button class="sp-close" id="sponta-close" type="button" aria-label="Fermer">&times;</button>
+        </div>
+        <p class="sp-sub">Aucune offre ne correspond ? Envoyez-nous votre profil, nous vous recontactons.</p>
+        <form class="sp-form" id="sponta-form">
+          <div class="sp-row">
+            <div class="sp-field"><label for="sp-nom">Nom et prénom</label><input id="sp-nom" required autocomplete="name" /></div>
+            <div class="sp-field"><label for="sp-tel">Téléphone</label><input id="sp-tel" type="tel" required autocomplete="tel" /></div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-field"><label for="sp-situation">Situation actuelle</label>
+              <select id="sp-situation" required>
+                <option value="">Choisir...</option>
+                <option>En poste</option>
+                <option>En poste - en préavis</option>
+                <option>En recherche active</option>
+                <option>À l'écoute du marché</option>
+              </select>
+            </div>
+            <div class="sp-field"><label for="sp-contrat">Contrat recherché</label>
+              <select id="sp-contrat" required>
+                <option value="">Choisir...</option>
+                <option>CDI</option>
+                <option>CDD</option>
+                <option>Intérim</option>
+                <option>Indifférent</option>
+              </select>
+            </div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-field"><label for="sp-salaire">Salaire souhaité</label><input id="sp-salaire" placeholder="ex. 35 000 € brut / an" required /></div>
+            <div class="sp-field"><label for="sp-dispo">Disponibilité</label><input id="sp-dispo" placeholder="ex. immédiate, préavis 2 mois" required /></div>
+          </div>
+          <div class="sp-note">En cliquant sur Envoyer, votre messagerie s'ouvre avec un e-mail pré-rempli : <b>joignez-y votre CV</b> avant de l'envoyer.</div>
+          <button class="sp-submit" type="submit">Envoyer ma candidature</button>
+        </form>
+      </div>
+    </dialog>
 
     <div class="controls">
       <div class="search">
@@ -334,6 +401,28 @@
   q.addEventListener('input', render);
   [selMetier,selRegion,selDept,selVille,selSalaire].forEach(function(s){ s.addEventListener('change', render); });
   resetBtn.addEventListener('click', resetAll);
+
+  // Candidature spontanee
+  var modal=document.getElementById('sponta-modal');
+  document.getElementById('sponta-open').addEventListener('click', function(){ modal.showModal(); });
+  document.getElementById('sponta-close').addEventListener('click', function(){ modal.close(); });
+  modal.addEventListener('click', function(e){ if(e.target===modal) modal.close(); });
+  document.getElementById('sponta-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v=function(id){ return (document.getElementById(id).value||'').trim(); };
+    var nom=v('sp-nom');
+    var subject='Candidature spontanée - '+nom+' - '+v('sp-contrat');
+    var body='Bonjour,\n\nJe vous adresse ma candidature spontanée. Vous trouverez mon CV en pièce jointe.\n\n'
+      +'Nom : '+nom+'\n'
+      +'Téléphone : '+v('sp-tel')+'\n'
+      +'Situation actuelle : '+v('sp-situation')+'\n'
+      +'Type de contrat recherché : '+v('sp-contrat')+'\n'
+      +'Salaire souhaité : '+v('sp-salaire')+'\n'
+      +'Disponibilité : '+v('sp-dispo')+'\n'
+      +'\nCordialement,\n'+nom;
+    window.location.href='mailto:sclos@skillcore.fr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    modal.close();
+  });
 })();
 </script>
 </body>
